@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <h1>Underground Tunes</h1><hr>
+        <p>Welcome to Underground Tunes. Music producers make it big by first experimenting with many genres and then sticking to the niche that suits them best. Our app is designed to help you determine what music genres you would be interested in while also giving you recommendations on genres that aren't already oversaturated by other big artists. Fill out the form below to get a personalized report of the best genre niches you should experiment with as an upcoming producer!
+        <form>
+            <label for="bpm"> Would you rather work with high or low bpm?</label><br>
+            <select id="bpm_q" name ="bpm">
+                <option value="T">High BPM</option>
+                <option value="F">Low BPM</option>
+            </select>
+            <br><br>
+            <label for="positivity"> Would you rather create sad melodies or happy melodies?</label><br>
+            <select id="positivity_q" name ="positivity">
+                <option value="T">Happy Melodies</option>
+                <option value="F">Sad Melodies</option>
+            </select>
+            <br><br>
+            <label for="nrgy">Would you rather create beats with upbeat drums or chill drums?</label><br>
+            <select id="nrgy_q" name ="nrgy">
+                <option value="T">Upbeat Drums</option>
+                <option value="F">Chill Drums</option>
+            </select>
+            <br><br><br>
+            <input id="submit" type="submit" value="Get Results">
+        </form>
+    </div>
+{% endblock %}
+
