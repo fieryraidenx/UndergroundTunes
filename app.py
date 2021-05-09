@@ -1,4 +1,5 @@
 from flask import *
+import spotify_processing
 
 app = Flask(__name__)
 
@@ -11,5 +12,5 @@ def start():
     return redirect("/home")
 
 
-
-app.run(debug=True)
+print(spotify_processing.process_data(False, True, False))
+#app.run(debug=True)
