@@ -11,7 +11,7 @@
     <div class="main">
         <h1>Underground Tunes</h1><hr>
         <p>Welcome to Underground Tunes. Music producers make it big by first experimenting with many genres and then sticking to the niche that suits them best. Our app is designed to help you determine what music genres you would be interested in while also giving you recommendations on genres that aren't already oversaturated by other big artists. Fill out the form below to get a personalized report of the best genre niches you should experiment with as an upcoming producer!
-        <form>
+        <form action="{{url_for('handle_data')}}" method="post">
             <label for="bpm"> Would you rather work with high or low bpm?</label><br>
             <select id="bpm_q" name ="bpm">
                 <option value="T">High BPM</option>

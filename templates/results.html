@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+{% endblock %}
+
+{% block body %}
+    <div class="main" style="width: 60% !important;">
+        <h1>Results</h1><hr>
+        <p>Here are your results. We will add more statistics soon, but you can see the Top 3 Genres along with their average stats and a couple of example songs. <br><br>Note: UT Rating is our own custom rating based on a variety of factors.</p>
+        <div class="results">
+            {%for info in data%}
+                <div class="genre">
+                    <h3>{{loop.index}}.) {{info[5].upper()}}</h3>
+                    <p>Average BPM: {{info[2]}}</p>
+                    <p>UT Rating: {{info[0]}}</p>
+                    <p>Positivity Rating: {{info[3]}}</p>
+                    <p>Energy Rating: {{info[4]}}</p>
+                    <p>Example Song: {{info[1][0]}}</p>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+{% endblock %}
+
