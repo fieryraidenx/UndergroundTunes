@@ -1,6 +1,7 @@
 from flask import *
 import spotify_processing
 import os
+import graph_maker
 
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
@@ -11,7 +12,7 @@ def home():
 
 @app.route("/results")
 def results():
-    return render_template("results.html", data=session.pop('spotify_data',None))
+    return render_template("results.html", data=session.pop('spotify_data',None), gurl=session.pop('graph_url',None))
 
 @app.route("/")
 def start():
@@ -26,6 +27,9 @@ def handle_data():
     )
     formatted_data = []
 
+    #Aditya takes in genre list and returns image url of graph
+    graph_url = graph_maker.get_graph_url(processed_data)
+
     NUM_GENRES_TO_RETURN = 5
     c = 1
     for genre in processed_data:
@@ -34,6 +38,7 @@ def handle_data():
         formatted_data.append(temp_data)
         c += 1
     session['spotify_data'] = formatted_data
+    session['graph_url'] = graph_url
     return redirect(url_for("results"))
 
 def trunc(flt):
