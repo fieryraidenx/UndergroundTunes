@@ -16,6 +16,8 @@ def results():
 
 @app.route("/")
 def start():
+    for f in os.listdir('static/images'):
+        os.remove(os.path.join('static/images', f))
     return redirect("/home")
 
 @app.route("/handle_data", methods=["POST"])

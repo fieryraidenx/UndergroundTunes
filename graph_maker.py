@@ -1,5 +1,14 @@
 from spotify_processing import *
 
+
+
+
+def space_out(words):
+    new_word = ""
+    for word in words.split(" "):
+        new_word += word + "\n"
+    return new_word
+
 def get_graph_url(genre_list):
     '''
     Genre List contains a list of genres in sorted descending order based on UT Rating
@@ -10,8 +19,26 @@ def get_graph_url(genre_list):
 
     This function will save a graph in the images folder and return the filepath of which this url is stored
     '''
-    filepath = "static/images/test.png" #CHANGE THIS TO "" WHEN STARTING TO CODE
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from random import randint
 
-    #write code here
+
+
+    genres = [space_out(genre_list[i].genre_name) for i in range(5)]
+    ratings = [genre_list[i].final_rating for i in range(5)]
+    colors = ["red", "orange", "yellow", "green", "blue"]
+    filepath = f"static/images/g{randint(100000,999999)}.png"
+
+
+    plt.bar(genres, ratings, color=colors)
+    axes = plt.gca()
+    axes.set_ylim([7,9])
+
+    plt.title('UT Ratings')
+    plt.xlabel('Genres')
+    plt.ylabel('UT Ratings')
+    plt.savefig(filepath)
 
     return filepath
